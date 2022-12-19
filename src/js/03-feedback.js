@@ -48,10 +48,15 @@ function storageUpdate(event) {
 function handleSubmitForm(event) {
   event.preventDefault();
 
+  formDataOutput();
   clearFormDataStorage();
   event.currentTarget.reset();
+}
 
-  console.log(feedbackFormState);
+function formDataOutput() {
+  if (getFormCurrentValue()) {
+    console.log(getFormCurrentValue());
+  }
 }
 
 function getFormCurrentValue() {
