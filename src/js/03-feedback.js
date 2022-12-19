@@ -25,19 +25,8 @@ function storageStatusCheck() {
 }
 
 function storageUpdate(event) {
-  if (event.target.name === 'email') {
-    feedbackFormState.email = `${event.target.value}`;
-
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(feedbackFormState));
-  }
-
-  if (event.target.name === 'message') {
-    feedbackFormState.message = `${event.target.value}`;
-
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(feedbackFormState));
-  }
-
-  return;
+  feedbackFormState[event.target.name] = event.target.value;
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(feedbackFormState));
 }
 
 function handleSubmitForm(event) {
