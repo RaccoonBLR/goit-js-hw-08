@@ -1,6 +1,7 @@
 import throttle from 'lodash.throttle';
 
 const feedbackFormState = {};
+const STORAGE_KEY = 'feedback-form-state';
 
 const formRef = document.querySelector('.feedback-form');
 
@@ -27,19 +28,13 @@ function storageUpdate(event) {
   if (event.target.name === 'email') {
     feedbackFormState.email = `${event.target.value}`;
 
-    localStorage.setItem(
-      'feedback-form-state',
-      JSON.stringify(feedbackFormState)
-    );
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(feedbackFormState));
   }
 
   if (event.target.name === 'message') {
     feedbackFormState.message = `${event.target.value}`;
 
-    localStorage.setItem(
-      'feedback-form-state',
-      JSON.stringify(feedbackFormState)
-    );
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(feedbackFormState));
   }
 
   return;
@@ -60,11 +55,11 @@ function formDataOutput() {
 }
 
 function getFormCurrentValue() {
-  return JSON.parse(localStorage.getItem('feedback-form-state'));
+  return JSON.parse(localStorage.getItem(STORAGE_KEY));
 }
 
 function clearFormDataStorage() {
-  if (localStorage.getItem('feedback-form-state')) {
-    localStorage.removeItem('feedback-form-state');
+  if (localStorage.getItem(STORAGE_KEY)) {
+    localStorage.removeItem(STORAGE_KEY);
   }
 }
